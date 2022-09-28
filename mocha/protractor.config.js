@@ -9,7 +9,8 @@ exports.config = {
     },
     directConnect: true,
     mochaOpts: {
-        reporter: 'spec'
+        reporter: 'spec',
+        timeout: 40000
     },
     framework: 'mocha',
     getPageTimeout: GLOBAL_TIMEOUT,
