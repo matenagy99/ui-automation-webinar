@@ -4,20 +4,20 @@ const { Given, When, Then, setDefaultTimeout } = require('cucumber');
 
 setDefaultTimeout(GLOBAL_TIMEOUT);
 
-Given("Epam careers page is loaded", async () => {
+Given(/Epam careers page is loaded/, async () => {
     await browser.get("https://www.epam.com/careers");
 });
 
-Then("Epam logo should be visible" , async () => {
+Then(/Epam logo should be visible/ , async () => {
     const logo = element(by.css("a.header__logo-container"));
 
     const acceptCookies = element(by.css("#onetrust-accept-btn-handler"));
-    await acceptCookies.click();
+    acceptCookies.click();
 
     expect(logo.isDisplayed()).to.eventually.be.true;
 });
 
-Then("Job search form is visible", async () => {
+Then(/Job search form is visible/, async () => {
     const searchForm = element(by.css("form#jobSearchFilterForm"));
     expect(searchForm.isDisplayed()).to.eventually.be.true;
 });
