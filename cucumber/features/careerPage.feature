@@ -16,9 +16,14 @@ Feature: EPAM job searching
     Then <Department> should be displayed on the page
 
     When Click on Find button
-    Then selected department should be displayed
+    Then Selected department <Department> should be displayed
     Then There should be a job named <Job>
-    Then Should have <Country> and <City> as location
+    Then <Job> should have <Country> and <City> as location
+    Then <Job> should have an apply button
+
+    When Click on <Job>'s apply button
+    Then <Job> should be displayed on the site
+    Then <Country> and <City> should be dislpayed on the site
 
     Examples:
     |Country  |City     |Department                            |Job                                |
