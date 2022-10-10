@@ -10,7 +10,6 @@ exports.config = {
     directConnect: true,
     cucumberOpts: {
         require: ['./step_definitions/**/*.js'],
-        tags: ['~@wip'],
         format: ['progress', 'json:cucumber.json']
     },
     framework: 'custom',

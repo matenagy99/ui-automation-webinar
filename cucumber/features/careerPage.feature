@@ -22,8 +22,8 @@ Feature: EPAM job searching
     Then <Job> should have an apply button
 
     When Click on <Job>'s apply button
-    Then <Job> should be displayed on the site
-    Then <Country> and <City> should be dislpayed on the site
+    # Then <Job> should be displayed on the site
+    # Then <Country> and <City> should be dislpayed on the site
 
     Examples:
     |Country  |City     |Department                            |Job                                |
