@@ -58,11 +58,11 @@ Then(/(.*) should have an apply button/, async (job) => {
     const applyButton = await careerPage.findJobsApplyButton(job);
     expect(applyButton.isDisplayed()).to.eventually.be.true;
     expect(applyButton.getText()).to.eventually.equal("VIEW AND APPLY");
+    applyButton.click();
 });
 
-When(/Click on (.*)'s apply button/, async (job) => {
-    const clickApplyButton = await careerPage.findJobsApplyButton(job);
-    await clickApplyButton.click();
+When(/(.*)'s page is loaded/, async (job) => {
+    await browser.wait(ec.urlContains(careerPage.formatJobTitle(job)), 5000);
 });
 
 Then(/(.*) should be displayed on the site/, async (job) => {
