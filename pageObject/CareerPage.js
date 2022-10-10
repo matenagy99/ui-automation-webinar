@@ -13,13 +13,14 @@ class CareerPage {
         this.departmentInput = element(by.css("div.job-search__departments div.selected-params"));
         this.departmentSelectDropdown = element(by.css(".multi-select-dropdown ul"));
         this.departmentSelect = department => element(by.css(`.multi-select-dropdown ul input[data-value='${department}'] + span`));
-        this.checkSelectedDepartment = element.all(by.css(".selected-items li"));
+        this.checkSelectedDepartment = element(by.css("ul.selected-items li:first-child"));
         
         this.findButton = element(by.css("#jobSearchFilterForm > button"));
         this.searchResults = element(by.css(".search-result ul li:last-child"));
 
         this.formatJobTitle = job => job.toLowerCase().replace(/[\s\/]/g, "-").replace(/[()]/g, "");
         this.jobResult = job => element(by.css(`.search-result__item .search-result__item-info a[href*='${job}']`));
+        this.checkLocationOfJob = job => job.element(by.xpath("./../../strong"));
         this.jobsApplyButton = job => job.element(by.xpath("./../../../div[@class='search-result__item-footer search-result__clearfix']/div/div/a"));
 
         this.positionName = element(by.css(".recruiting-page__header h1"));
@@ -29,7 +30,7 @@ class CareerPage {
 
     async load() {
         await browser.get("https://www.epam.com/careers");
-        await browser.wait(ec.elementToBeClickable(this.logo), 10000);
+        return await browser.wait(ec.elementToBeClickable(this.logo), 10000);
     }
 
     async selectLocation(country, city) {
@@ -40,26 +41,28 @@ class CareerPage {
         await countryToClick.click();
 
         const cityToClick = this.citySelect(country, city);
-        await cityToClick.click()
+        return await cityToClick.click()
     }
 
     async selectDepartment(department) {
         await this.departmentInput.click();
         await browser.wait(ec.visibilityOf(this.departmentSelectDropdown), 3000);
         const departmentToClick = this.departmentSelect(department);
-        await departmentToClick.click();
+        return await departmentToClick.click();
     }
 
-    async searchForJobs() {
+    async clickFindButton() {
         await this.findButton.click();
-        await browser.wait(ec.visibilityOf(this.searchResults), 5000);
+        return await browser.wait(ec.visibilityOf(this.searchResults), 5000);
     }
 
-    async clickJobsApplyButton(job) {
+    async findJobsApplyButton(job) {
         const formattedJobTitle = this.formatJobTitle(job);
         const jobToApply = this.jobResult(formattedJobTitle);
         const applyButtonOfJob = this.jobsApplyButton(jobToApply);
-        await applyButtonOfJob.click();
+        return new Promise((resolve) => {
+            resolve(applyButtonOfJob);
+        });
     }
 
 }
