@@ -26,6 +26,7 @@ Feature: EPAM job searching
     And <Country> and <City> should be dislpayed on the site
 
     Examples:
-    |Country  |City     |Department                            |Job                                |
-    |Hungary  |Debrecen |Software, System, and Test Engineering|.NET Developer (Middle/Senior/Lead)|
+    |Country      |City       |Department                            |Job                                     |
+    |Hungary      |Debrecen   |Software, System, and Test Engineering|.NET Developer (Middle/Senior/Lead)     |
+    |United States|Chicago, IL|Business and Data Analysis            |Senior Web Analytics Consultant - Remote|
   
