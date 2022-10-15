@@ -1,0 +1,16 @@
+[
+    {
+        "country": "Hungary",
+        "coutryShortForm": "Hungary",
+        "city": "Debrecen",
+        "department": "Software, System, and Test Engineering",
+        "job": ".NET Developer (Middle/Senior/Lead)"
+    },
+    {
+        "country": "United States",
+        "coutryShortForm": "USA",
+        "city": "Chicago, IL",
+        "department": "Business and Data Analysis",
+        "job": "Senior Web Analytics Consultant - Remote"
+    }
+]
