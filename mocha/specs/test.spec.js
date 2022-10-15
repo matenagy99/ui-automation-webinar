@@ -3,6 +3,7 @@
 const CareerPage = require("../../pageObject/CareerPage");
 const careerPage = new CareerPage();
 const testData = require("./test.json");
+const fs = require("fs")
 
 testData.forEach(search => {
     describe("Search for job", async () => {
