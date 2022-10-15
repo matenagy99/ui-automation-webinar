@@ -18,7 +18,7 @@ class CareerPage {
         this.findButton = element(by.css("#jobSearchFilterForm > button"));
         this.searchResults = element(by.css(".search-result ul li:last-child"));
 
-        this.formatJobTitle = job => job.toLowerCase().replace(/[\s\/]/g, "-").replace(/[()]/g, "");
+        this.formatJobTitle = job => job.toLowerCase().replace(/\s-\s|[\s\/]/g, "-").replace(/[()&]/g, "");
         this.jobResult = job => element(by.css(`.search-result__item .search-result__item-info a[href*='${job}']`));
         this.checkLocationOfJob = job => job.element(by.xpath("./../../strong"));
         this.jobsApplyButton = job => job.element(by.xpath("./../../../div[@class='search-result__item-footer search-result__clearfix']/div/div/a"));
@@ -41,7 +41,7 @@ class CareerPage {
         await countryToClick.click();
 
         const cityToClick = this.citySelect(country, city);
-        return await cityToClick.click()
+        return await cityToClick.click();
     }
 
     async selectDepartment(department) {
@@ -60,7 +60,7 @@ class CareerPage {
         const formattedJobTitle = this.formatJobTitle(job);
         const jobToApply = this.jobResult(formattedJobTitle);
         const applyButtonOfJob = this.jobsApplyButton(jobToApply);
-        return new Promise((resolve) => {
+        return new Promise(resolve => {
             resolve(applyButtonOfJob);
         });
     }
