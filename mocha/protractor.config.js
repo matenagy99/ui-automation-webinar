@@ -6,11 +6,20 @@ exports.config = {
     specs: 'specs/**/*.spec.js',
     multiCapabilities: [
         {browserName: 'chrome'},
-        {browserName: 'firefox'}
+        //{browserName: 'firefox'},
     ],
     directConnect: true,
     mochaOpts: {
-        reporter: 'spec',
+        reporter: 'mochawesome-screenshots',
+        reporterOptions: {
+            reportDir: './screenshots',
+            reportName: `${this}_failed`,
+            takePassedScreenshot: false,
+            clearOldScreenshots: true,
+            shortScrFileNames: false,
+            jsonReport: false,
+            multiReport: false
+        },
         timeout: 40000
     },
     framework: 'mocha',

@@ -14,7 +14,10 @@ testData.forEach(search => {
 
         describe("Careers page", async () => {
             it("should be opnened", async () => {
-                await careerPage.acceptCookiesButton.click();
+                if (await careerPage.acceptCookiesButton.isPresent()) {
+                    await careerPage.acceptCookiesButton.click();
+                }
+
                 expect(careerPage.logo.isDisplayed()).to.eventually.be.true;
             });
         });
