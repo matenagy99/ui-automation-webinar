@@ -6,7 +6,7 @@ exports.config = {
     specs: 'specs/**/*.spec.js',
     multiCapabilities: [
         {browserName: 'chrome'},
-        //{browserName: 'firefox'},
+        {browserName: 'firefox'},
     ],
     directConnect: true,
     mochaOpts: {
